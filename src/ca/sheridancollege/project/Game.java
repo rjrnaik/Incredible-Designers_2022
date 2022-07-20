@@ -6,19 +6,20 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
- * The class that models your game. You should create a more specific
- * child of this class and instantiate the methods given.
+ * The class that models your game. You should create a more specific child of
+ * this class and instantiate the methods given.
+ *
  * @author dancye, 2018
  */
-public abstract class Game 
-{
+public class Game {
+
     private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
-    
-    public Game(String givenName)
-    {
+    private ArrayList<Player> players;// the players of the game
+
+    public Game(String givenName) {
         gameName = givenName;
         players = new ArrayList();
     }
@@ -26,39 +27,55 @@ public abstract class Game
     /**
      * @return the gameName
      */
-    public String getGameName() 
-    {
+    public String getGameName() {
         return gameName;
     }
-    
-     /**
+
+    /**
      * @return the players of this game
      */
-    public ArrayList <Player> getPlayers() 
-    {
+    public ArrayList<Player> getPlayers() {
+        Scanner scan1 = new Scanner(System.in);
+        System.out.println("Enter Player1 name:");
+        String name1 = scan1.next();
+        System.out.println("Enter Player2 name:");
+        String name2 = scan1.next();
+        Player p1 = new Player(name1);
+        Player p2 = new Player(name2);
+        players.add(p1);
+        players.add(p2);
         return players;
     }
 
     /**
      * @param players the players of this game
      */
-    public void setPlayers(ArrayList <Player> players) 
-    {
+    public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
-    
+
     /**
-     * Play the game. This might be one method or many method calls depending
-     * on your game.
+     * Play the game. This might be one method or many method calls depending on
+     * your game.
      */
-    public abstract void play();
     
+    public void play() {
+        
+        GroupOfCards goc = new GroupOfCards(52);
+        goc.generateDeck();
+        drawCard();
+    }
+    
+    public void drawCard(){
+        
+    }
+
     /**
      * When the game is over, use this method to declare and display a winning
      * player.
      */
-    public abstract void declareWinner();
+    public void declareWinner() {
 
-   
-    
+    }
+
 }//end class
