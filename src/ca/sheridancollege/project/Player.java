@@ -9,14 +9,13 @@ package ca.sheridancollege.project;
  * A class that models each Player in the game. Players have an identifier,
  * which should be unique.
  *
- * @author dancye, 2018
  */
 public class Player {
 
     private String playerName; //the unique ID for this player
 
     /**
-     * @return the playerName
+     *@param playerName String
      */
     
     public Player(String playerName){
@@ -28,6 +27,6 @@ public class Player {
     }
     
     public String getPlayerName() {
-        return playerName;
+        return this.playerName;
     }
 }

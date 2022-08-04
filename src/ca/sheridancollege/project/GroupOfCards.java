@@ -12,16 +12,16 @@ import java.util.Collections;
  * A concrete class that represents any grouping of cards for a Game.
  * HINT, you might want to subclass this more than once.
  * The group of cards has a maximum size attribute which is flexible for reuse.
- * @author dancye
+ * @author Jaskaran Singh
  */
 public class GroupOfCards 
 {
    
     //The group of cards, stored in an ArrayList
     private int size;//the size of the grouping
-    ArrayList<Card> cards = new ArrayList<>();
-    ArrayList<Card> player1Deck = new ArrayList<>();
-    ArrayList<Card> player2Deck = new ArrayList<>();
+    static ArrayList<Card> cards = new ArrayList<>();
+    static ArrayList<Card> player1Deck = new ArrayList<>();
+    static ArrayList<Card> player2Deck = new ArrayList<>();
     
     public GroupOfCards(int givenSize)
     {
@@ -62,6 +62,7 @@ public class GroupOfCards
         for (Card.Suite suite : Card.Suite.values()) {
             for (Card.Rank rank : Card.Rank.values())// hearts,ace
             {
+                
                 cards.add(new Card(suite, rank));
                 index++;
             }
@@ -72,12 +73,12 @@ public class GroupOfCards
             player1Deck.add(cards.get(i));
             player2Deck.add(cards.get(i + 1));
         }
-        System.out.println("Player 1 deck:");
+        System.out.println("\nPlayer 1 deck:");
         for (Card card : player1Deck) {
             System.out.println(card.getRank() + " of " + card.getSuite());
         }
 
-        System.out.println("Player 2 deck:");
+        System.out.println("\nPlayer 2 deck:");
         for (Card card : player2Deck) {
             System.out.println(card.getRank() + " of " + card.getSuite());
         }

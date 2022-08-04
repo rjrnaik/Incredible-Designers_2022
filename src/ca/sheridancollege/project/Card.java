@@ -10,7 +10,7 @@ package ca.sheridancollege.project;
  * enough to be instantiated for any Card game. Students wishing to add to the
  * code should remember to add themselves as a modifier.
  *
- * @author dancye, 2018
+ * @author Kanish Bhavsar
  */
 public class Card {
 
@@ -56,6 +56,39 @@ public class Card {
      */
     public void setRank(Rank rank) {
         this.rank = rank;
+    }
+
+    public int getRankValue() {
+        switch (this.rank) {
+            case ACE:
+                return 14;
+            case TWO:
+                return 2;
+            case THREE:
+                return 3;
+            case FOUR:
+                return 4;
+            case FIVE:
+                return 5;
+            case SIX:
+                return 6;
+            case SEVEN:
+                return 7;
+            case EIGHT:
+                return 8;
+            case NINE:
+                return 9;
+            case TEN:
+                return 10;
+            case JACK:
+                return 11;
+            case QUEEN:
+                return 12;
+            case KING:
+                return 13;
+            default:
+                return 0;
+        }
     }
 
     public String toString() {
