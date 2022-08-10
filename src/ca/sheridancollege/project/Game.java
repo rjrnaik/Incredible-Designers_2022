@@ -19,6 +19,7 @@ public class Game {
 
     private final String gameName;//the title of the game
     private static ArrayList<Player> players;// the players of the game
+    private static int drawCount = 0;
 
     public Game(String givenName) {
         gameName = givenName;
@@ -40,7 +41,7 @@ public class Game {
     }
 
     /**
-     * @param players the players of this game
+     * @param p
      */
     public void setPlayers(Player p) {
         players.add(p);
@@ -54,46 +55,39 @@ public class Game {
 
         GroupOfCards goc = new GroupOfCards(52);
         goc.generateDeck();
-        //while (true) {
         drawCard();
-        //}
     }
 
     public void drawCard() {
-        //GroupOfCards goc = new GroupOfCards(52);
-        Scanner sc = new Scanner(System.in);
-        String p1Resp = "d";
-        String p2Resp = "d";
-        int drawCount = 0;
-        boolean quitGame = false;
-        System.out.println("-------------------------------------");
-        while (!quitGame) {
-            System.out.println("\nPlayer 1's turn: \nEnter d to drawCard");
-            p1Resp = sc.next();
-            System.out.println("Player 2's turn: \nEnter d to drawCard");
-            p2Resp = sc.next();
-            if (p1Resp.equalsIgnoreCase("q")) {
-                quitGame = true;
-                System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
-            } else if (p2Resp.equalsIgnoreCase("q")) {
-                quitGame = true;
-                System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
-            } else {
-                if (!GroupOfCards.player1Deck.isEmpty() || !GroupOfCards.player2Deck.isEmpty()) {
-                    if (drawCount > 25) {
-                        drawCount = 0;
-                        Collections.shuffle(GroupOfCards.player1Deck);
-                        Collections.shuffle(GroupOfCards.player1Deck);
-                    }
-                    compareCard(0);
+        try ( Scanner sc = new Scanner(System.in)) {
+            String p1Resp = "d";
+            String p2Resp = "d";
+            boolean quitGame = false;
+            System.out.println("-------------------------------------");
+            while (drawCount < 10) {
+                System.out.println("\nPlayer 1's turn: \nEnter d to drawCard");
+                p1Resp = sc.next();
+                System.out.println("Player 2's turn: \nEnter d to drawCard");
+                p2Resp = sc.next();
+                if (p1Resp.equalsIgnoreCase("q")) {
+                    quitGame = true;
+                    System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
+                } else if (p2Resp.equalsIgnoreCase("q")) {
+                    quitGame = true;
+                    System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
                 } else {
-                    break;
+                    //if (!GroupOfCards.player1Deck.isEmpty() || !GroupOfCards.player2Deck.isEmpty()) {
+
+                    compareCard(0);
+                    //} else {
+                    //System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
+                    //break;
                 }
+                drawCount++;
             }
-            drawCount++;
+
+            System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
         }
-        //System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), p1Resp, p2Resp));
-        sc.close();
     }
 
     public void compareCard(int drawCount) {
@@ -102,7 +96,6 @@ public class Game {
             System.exit(0);
         } else {
             if (GroupOfCards.player1Deck.get(drawCount).getRankValue() > GroupOfCards.player2Deck.get(drawCount).getRankValue()) {
-                System.out.println("drawCount:" + drawCount);
                 System.out.println("Player1 drew " + GroupOfCards.player1Deck.get(drawCount).getRank() + " of " + GroupOfCards.player1Deck.get(drawCount).getSuite());
                 System.out.println("Player2 drew " + GroupOfCards.player2Deck.get(drawCount).getRank() + " of " + GroupOfCards.player2Deck.get(drawCount).getSuite());
                 GroupOfCards.player1Deck.add(GroupOfCards.player1Deck.get(drawCount));
@@ -113,7 +106,6 @@ public class Game {
                 System.out.println("Player1 deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println("Player2 deck size:" + GroupOfCards.player2Deck.size());
             } else if (GroupOfCards.player1Deck.get(drawCount).getRankValue() < GroupOfCards.player2Deck.get(drawCount).getRankValue()) {
-                System.out.println("drawCount:" + drawCount);
                 System.out.println("Player1 drew " + GroupOfCards.player1Deck.get(drawCount).getRank() + " of " + GroupOfCards.player1Deck.get(drawCount).getSuite());
                 System.out.println("Player2 drew " + GroupOfCards.player2Deck.get(drawCount).getRank() + " of " + GroupOfCards.player2Deck.get(drawCount).getSuite());
                 GroupOfCards.player2Deck.add(GroupOfCards.player2Deck.get(drawCount));
@@ -124,7 +116,7 @@ public class Game {
                 System.out.println("Player1 deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println("Player2 deck size:" + GroupOfCards.player2Deck.size());
             } else if (GroupOfCards.player1Deck.get(drawCount).getRankValue() == GroupOfCards.player2Deck.get(drawCount).getRankValue()) {
-                System.out.println("drawCount:" + drawCount);
+                //System.out.println("drawCount:" + drawCount);
                 System.out.println("Player1 drew " + GroupOfCards.player1Deck.get(drawCount).getRank() + " of " + GroupOfCards.player1Deck.get(drawCount).getSuite());
                 System.out.println("Player2 drew " + GroupOfCards.player2Deck.get(drawCount).getRank() + " of " + GroupOfCards.player2Deck.get(drawCount).getSuite());
                 System.out.println("War mode initiated");
@@ -155,13 +147,13 @@ public class Game {
         } else if (GroupOfCards.player2Deck.size() == 52) {
             return "Player2 is the winner!!";
         } else if (p1DeckSize < 4) {
-           return "Player2 is the winner!!";
+            return "Player2 is the winner!!";
         } else if (p2DeckSize < 4) {
             return "Player1 is the winner!!";
         } else if (GroupOfCards.player1Deck.size() > GroupOfCards.player2Deck.size()) {
             return "Player1 is the winner!!";
-       } else if (GroupOfCards.player1Deck.size() < GroupOfCards.player2Deck.size()) {
-           return "Player2 is the winner!!";
+        } else if (GroupOfCards.player1Deck.size() < GroupOfCards.player2Deck.size()) {
+            return "Player2 is the winner!!";
         } else if (p1Resp.equalsIgnoreCase("q")) {
             return "Player1 Quit...Player2 is the winner!!";
         } else if (p2Resp.equalsIgnoreCase("q")) {
