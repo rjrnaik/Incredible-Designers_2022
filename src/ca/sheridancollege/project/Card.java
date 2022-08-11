@@ -38,7 +38,7 @@ public class Card {
     }
 
     /**
-     * @param color the color to set
+     * @param suite
      */
     public void setSuite(Suite suite) {
         this.suite = suite;
@@ -58,6 +58,10 @@ public class Card {
         this.rank = rank;
     }
 
+    /**
+     * Method used to retrieve integer value for corresponding Card Rank value
+     * @return 
+     */
     public int getRankValue() {
         switch (this.rank) {
             case ACE:
@@ -89,9 +93,5 @@ public class Card {
             default:
                 return 0;
         }
-    }
-
-    public String toString() {
-        return "";
     }
 }
