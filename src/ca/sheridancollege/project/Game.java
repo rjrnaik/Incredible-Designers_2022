@@ -145,9 +145,9 @@ public class Game {
                 } else if (Game.drawCount == 9) {
                     System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
                     System.exit(0);
-//                } else {
-//                    War w = new War("War");       //Functionality unused due to change in the requrements
-//                    w.compareCard(0);
+                } else {
+                    War w = new War("War");       //Functionality unused due to change in the requrements
+                    w.compareCard(0);
 //                }
                 }
             }            

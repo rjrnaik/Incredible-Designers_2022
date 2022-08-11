@@ -51,7 +51,7 @@ public class War extends Game {
                 //System.out.println("Drawcount: " + Game.drawCount);
                 System.out.println("=================================================");
                 //Thread.sleep(250);
-                //System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
+                System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
 //                System.out.println("Shuffling the decks...");
 //                Collections.shuffle(GroupOfCards.player1Deck);
 //                Collections.shuffle(GroupOfCards.player2Deck);
