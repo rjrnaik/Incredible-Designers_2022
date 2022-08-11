@@ -5,7 +5,7 @@
  */
 package ca.sheridancollege.project;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,8 +65,8 @@ public class Game {
     
     public void drawCard() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
-        String p1Resp = "d";
-        String p2Resp = "d";
+        String p1Resp;
+        String p2Resp;
         System.out.println("-------------------------------------");
         while (drawCount < 10) {
             try {
@@ -89,7 +89,7 @@ public class Game {
                 
             } catch (IndexOutOfBoundsException iob) {
                 iob.getMessage();
-            }            
+            }
         }
         System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
     }
@@ -109,7 +109,7 @@ public class Game {
                 System.out.println(players.get(0).getPlayerName() + " wins the round!!");
                 System.out.println(players.get(0).getPlayerName() + "'s deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println(players.get(1).getPlayerName() + "'s deck size:" + GroupOfCards.player2Deck.size());
-                System.out.println("Drawcount: " + Game.drawCount);
+                //System.out.println("Drawcount: " + Game.drawCount);
                 System.out.println("=================================================");
                 Thread.sleep(250);
             } else if (GroupOfCards.player1Deck.get(drawCount).getRankValue() < GroupOfCards.player2Deck.get(drawCount).getRankValue()) {
@@ -122,7 +122,7 @@ public class Game {
                 System.out.println(players.get(1).getPlayerName() + " wins the round!!");
                 System.out.println(players.get(0).getPlayerName() + "'s deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println(players.get(1).getPlayerName() + "'s deck size:" + GroupOfCards.player2Deck.size());
-                System.out.println("Drawcount: " + Game.drawCount);
+                //System.out.println("Drawcount: " + Game.drawCount);
                 System.out.println("=================================================");
                 Thread.sleep(250);
             } else if (GroupOfCards.player1Deck.get(drawCount).getRankValue() == GroupOfCards.player2Deck.get(drawCount).getRankValue()) {
@@ -146,7 +146,7 @@ public class Game {
                     System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
                     System.exit(0);
 //                } else {
-//                    War w = new War("War");
+//                    War w = new War("War");       //Functionality unused due to change in the requrements
 //                    w.compareCard(0);
 //                }
                 }

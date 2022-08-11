@@ -4,7 +4,7 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.Collections;
+//import java.util.Collections;
 
 /**
  * WAR class is used to handle war level when Card Rank Values are same
@@ -48,10 +48,8 @@ public class War extends Game {
                 System.out.println("Player1 deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println("Player2 deck size:" + GroupOfCards.player2Deck.size());
                 Game.drawCount++;
-                System.out.println("Drawcount: " + Game.drawCount);
+                //System.out.println("Drawcount: " + Game.drawCount);
                 System.out.println("=================================================");
-
-                //super.drawCard();
                 //Thread.sleep(250);
                 //System.out.println(declareWinner(GroupOfCards.player1Deck.size(), GroupOfCards.player2Deck.size(), "d", "d"));
 //                System.out.println("Shuffling the decks...");
@@ -86,8 +84,8 @@ public class War extends Game {
                 GroupOfCards.player1Deck.remove(3);
                 System.out.println("Player1 deck size:" + GroupOfCards.player1Deck.size());
                 System.out.println("Player2 deck size:" + GroupOfCards.player2Deck.size());
-                Game.drawCount++;
-                System.out.println("Drawcount: " + Game.drawCount);
+                //Game.drawCount++;
+                //System.out.println("Drawcount: " + Game.drawCount);
                 System.out.println("=================================================");
 
                 //Thread.sleep(250);

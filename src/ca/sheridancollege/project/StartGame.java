@@ -7,7 +7,8 @@ package ca.sheridancollege.project;
 import java.util.Scanner;
 
 /**
- *
+ *Starter code for the GAME
+ * Asks players for their names
  * @author RajrishiNaik
  */
 public class StartGame {
